@@ -1,20 +1,25 @@
 const fetch = require('node-fetch')
-require('dotenv').config({ path: '~/Documents/work/node-backend/.env'})
+require('dotenv').config()
 
-const url = process.env.URLAPI
-const username = process.env.USERNAME
-const password = process.env.PASSWORD
+const url = 'http://broker.windowschannel.com:8081/api/v4/clients'
+const username = '8122b87d84e7d'
+const password = 'MzAyNDcyNDk4MDA3MTIwMDIwOTM3MDcyNTgzODMzMDI2NTG'
+
 
 async function getPlayersConnected(){
-    const response = await fetch(url,{
-        headers: {
-            'Authorization': 'Basic ' + Buffer.from(`${username}:${password}`, 'binary').toString('base64')
-        }
-    });
-    const data = await response.json();
-    console.log(data.data[0].clientid);
+    try {
+        const response = await fetch(url,{
+            headers: {
+                'Authorization': 'Basic ' + Buffer.from(`${username}:${password}`, 'binary').toString('base64')
+            }
+        });
+        return await response.json(); 
+        //  console.log(data.data[0].clientid);
+    } catch (error) {
+        console.log(`hay un hp error, jueputa ${url}`);
+    }    
 }
-getPlayersConnected()
+
 module.exports = {
     getPlayersConnected
 }
