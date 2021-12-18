@@ -1,0 +1,19 @@
+version: "3.0"                     
+
+services:  
+  backend:
+    image: backend-node
+    container_name: container-backend-node
+    build:
+      context: ./node
+      dockerfile: Dockerfile
+    # environment:      
+    #  - VIRTUAL_HOST=administradorcanales.windowschannel.com
+    #  - LETSENCRYPT_HOST=administradorcanales.windowschannel.com
+    #  - LETSENCRYPT_EMAIL=info@windowschannel.com
+    #  - VIRTUAL_PORT=8080
+    volumes:
+     - ./node:/usr/src/app
+     - /usr/src/app/node_modules
+    ports:
+     - 3000:3000
