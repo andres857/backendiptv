@@ -2,16 +2,14 @@ version: "3.0"
 
 services:  
   backend:
+    env_file:
+      - node/.env
     image: backend-node
-    container_name: container-backend-node
+    container_name: backend-node
+    restart: always
     build:
       context: ./node
       dockerfile: Dockerfile
-    # environment:      
-    #  - VIRTUAL_HOST=administradorcanales.windowschannel.com
-    #  - LETSENCRYPT_HOST=administradorcanales.windowschannel.com
-    #  - LETSENCRYPT_EMAIL=info@windowschannel.com
-    #  - VIRTUAL_PORT=8080
     volumes:
      - ./node:/usr/src/app
      - /usr/src/app/node_modules

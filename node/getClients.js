@@ -1,10 +1,11 @@
 const fetch = require('node-fetch')
-require('dotenv').config()
+const {URLAPI,USERNAME,PASSWORD} = require('./config')
 
-const url = 'http://broker.windowschannel.com:8081/api/v4/clients'
-const username = '8122b87d84e7d'
-const password = 'MzAyNDcyNDk4MDA3MTIwMDIwOTM3MDcyNTgzODMzMDI2NTG'
+const url = URLAPI
+const username = USERNAME
+const password = PASSWORD
 
+console.log(`${url}----`);
 
 async function getPlayersConnected(){
     try {
